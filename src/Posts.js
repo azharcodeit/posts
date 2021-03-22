@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Spinner } from "react-bootstrap";
 import "./Posts.css";
+import spinner from "./assets/spinner.gif";
+import deleteImg from "./assets/delete.png";
+import editImg from "./assets/edit.png";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -36,11 +38,17 @@ const Posts = () => {
       <section className="grid">
         {posts.map((p, i) => (
           <div key={i} className="postContainer">
-            <div className="image-wrapper">
+            <div className="imageWrapper">
               <img
                 src={`https://picsum.photos/id/${i + 11}/600/200`}
                 alt="post"
               />
+              <div>
+                <div className="actions">
+                  <h5 className="editButton">Edit</h5>
+                  <img src={deleteImg} alt="delete" className="postActions" />
+                </div>
+              </div>
             </div>
             <p className="title">{p.name.first}</p>
             <div className="description">
@@ -65,7 +73,15 @@ const Posts = () => {
           </div>
         ))}
       </section>
-      {loading ? <Spinner animation="border" variant="dark" /> : ""}
+      {loading ? (
+        <img
+          src={spinner}
+          alt="loading..."
+          style={{ width: 100, height: 100 }}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };
