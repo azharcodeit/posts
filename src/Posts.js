@@ -27,6 +27,11 @@ const Posts = () => {
     fetchPosts();
   };
 
+  function onRemove(id) {
+    const filteredPosts = posts.filter((item) => item !== posts[id]);
+    setPosts(filteredPosts);
+  }
+
   return (
     <div className="layoutMain">
       <header id="header">
@@ -45,10 +50,23 @@ const Posts = () => {
               <div>
                 <div className="actions">
                   <h5 className="editButton">Edit</h5>
-                  <img src={deleteImg} alt="delete" className="postActions" />
+                  <img
+                    src={deleteImg}
+                    alt="delete"
+                    className="postActions"
+                    onClick={() => {
+                      if (
+                        window.confirm(
+                          "Are you sure you wish to delete this item?"
+                        )
+                      )
+                        onRemove(i);
+                    }}
+                  />
                 </div>
               </div>
             </div>
+
             <p className="title">{p.name.first}</p>
             <div className="description">
               <p>
@@ -56,7 +74,9 @@ const Posts = () => {
               </p>
               <p>{p.location.timezone.offset}</p>
             </div>
+
             <hr />
+
             <div className="author">
               <img
                 src={p.picture.thumbnail}
@@ -72,6 +92,7 @@ const Posts = () => {
           </div>
         ))}
       </section>
+
       {loading ? (
         <img
           src={spinner}

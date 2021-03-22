@@ -4,7 +4,6 @@
   flex-direction: column;
   align-items: center;
 }
-
 #header {
   top: 0;
   height: 70px;
@@ -21,7 +20,6 @@
   border-bottom: 1px solid #e6eaea;
   padding: 25px;
 }
-
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -31,36 +29,32 @@
   align-items: stretch;
   width: 100%;
 }
-
 .imageWrapper {
   position: relative;
   margin: 0 auto;
   width: 100%;
   overflow: hidden;
   font-size: 0;
-  color: black;
+  color: #000;
 }
 .imageWrapper div {
   position: absolute;
   width: 100%;
   height: 100%;
   bottom: 0;
-  color: white;
+  color: #fff;
   opacity: 0;
   visibility: hidden;
   transition: visibility 0s, opacity 0.3s linear;
   background: rgba(0, 0, 0, 0.5);
 }
-
 .imageWrapper:hover img {
   transform: scale(1.1);
 }
-
 .imageWrapper:hover div {
   visibility: visible;
   opacity: 1;
 }
-
 img {
   width: 100%;
   -webkit-transition: 0.3s all;
@@ -68,23 +62,19 @@ img {
   height: 220px;
   object-fit: cover;
 }
-
 button:hover {
   background-color: #107065;
   transition: all 0.3s;
 }
-
 .authorPicture {
   width: 35px;
   height: 35px;
   border-radius: 50%;
   margin-right: 2%;
 }
-
 .postContainer {
-  background-color: white;
+  background-color: #fff;
 }
-
 .author,
 .title,
 .description {
@@ -93,39 +83,32 @@ button:hover {
   overflow-wrap: break-word;
   font-size: 14px;
 }
-
 .title {
   font-size: 16px;
 }
-
 .author {
   font-size: 12px;
   display: flex;
   flex-direction: row;
 }
-
 .authorInfo {
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
 }
-
 hr {
-  margin: 0px 10px 0px 10px;
+  margin: 0px 10px;
 }
-
 .functionality {
   display: flex;
   flex-direction: column;
 }
-
 .description {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-
 button {
   height: 40px;
   background-color: #13aa99;
@@ -136,15 +119,13 @@ button {
   transition: all 0.3s;
   width: 150px;
 }
-
 .postActions {
   width: 30px;
   height: 30px;
-  padding: 2%;
+  padding: 5px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 50%;
 }
-
 .editButton {
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 34px;
@@ -153,7 +134,6 @@ button {
   line-height: 34px;
   font-size: 14px;
 }
-
 .actions {
   display: flex;
   flex-flow: row wrap;
@@ -162,7 +142,10 @@ button {
   padding: 10px;
 }
 .logo {
-  border: 0.5px solid black;
+  border: 0.5px solid #000;
   height: 39px;
   padding: 10px;
+}
+.hidden {
+  display: none;
 }
