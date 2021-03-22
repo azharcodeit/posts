@@ -39,15 +39,14 @@ const Posts = () => {
       <section className="grid">
         {posts.map((p, i) => (
           <div key={i} className="postContainer">
-            <img
-              src="https://images.unsplash.com/photo-1616069424312-71ba3e104641?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-              alt="post"
-            />
-            <p className="title">Title</p>
-            <p className="description">
-              description description description description description
-              description
-            </p>
+            <img src="https://cutt.ly/pxj8Inp" alt="post" />
+            <p className="title">{p.name.first}</p>
+            <div className="description">
+              <p>
+                {p.location.city}, {p.location.state}
+              </p>
+              <p>{p.location.timezone.offset}</p>
+            </div>
             <hr />
             <p className="author">
               <img
