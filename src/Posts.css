@@ -1,10 +1,25 @@
 .layoutMain {
-  padding: 5%;
-  padding-top: 2%;
   margin: 20px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#header {
+  top: 0;
+  height: 70px;
+  width: 100%;
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 400;
+  background-color: #f4f7f6;
+  z-index: 302;
+  transition: background 0.3s;
+  border-bottom: 1px solid #e6eaea;
+  padding: 25px;
 }
 
 .grid {
@@ -17,14 +32,34 @@
   width: 100%;
 }
 
+.image-wrapper {
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+  font-size: 0;
+  color: black;
+}
 img {
   width: 100%;
+  -webkit-transition: 0.3s all;
+  transition: transform 0.3s ease-in-out;
   height: 220px;
   object-fit: cover;
 }
+
+img:hover,
+button:hover {
+  -webkit-filter: brightness(70%);
+  -webkit-transition: all 0.3s;
+}
+
+.image-wrapper:hover img {
+  transform: scale(1.1);
+}
+
 .authorPicture {
-  width: 27px;
-  height: 27px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   margin-right: 2%;
 }
@@ -47,8 +82,16 @@ img {
 }
 
 .author {
-  text-transform: uppercase;
   font-size: 12px;
+  display: flex;
+  flex-direction: row;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
 }
 
 hr {
@@ -57,11 +100,22 @@ hr {
 
 .functionality {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .description {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+button {
+  height: 40px;
+  background-color: #13aa99;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s;
+  width: 150px;
 }

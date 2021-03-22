@@ -19,7 +19,7 @@ const Posts = () => {
 
   useEffect(() => {
     fetchPosts();
-  }, [url]);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,18 +28,20 @@ const Posts = () => {
 
   return (
     <div className="layoutMain">
-      <h2>Posts</h2>
-
-      <div className="functionality">
-        <form onSubmit={handleSubmit}>
-          <input type="submit" value="Load posts" />
-        </form>
-      </div>
+      <header id="header">
+        <h2>Post feed</h2>
+        <button onClick={handleSubmit}>LOAD POSTS</button>
+      </header>
 
       <section className="grid">
         {posts.map((p, i) => (
           <div key={i} className="postContainer">
-            <img src="https://cutt.ly/pxj8Inp" alt="post" />
+            <div className="image-wrapper">
+              <img
+                src={`https://picsum.photos/id/${i + 11}/600/200`}
+                alt="post"
+              />
+            </div>
             <p className="title">{p.name.first}</p>
             <div className="description">
               <p>
@@ -48,14 +50,18 @@ const Posts = () => {
               <p>{p.location.timezone.offset}</p>
             </div>
             <hr />
-            <p className="author">
+            <div className="author">
               <img
                 src={p.picture.thumbnail}
                 className="authorPicture"
                 alt="author"
               />
-              By: {p.name.first} {p.name.last}{" "}
-            </p>
+              <div className="authorInfo">
+                BY: {p.name.first.toUpperCase()} {p.name.last.toUpperCase()}{" "}
+                <br />
+                {p.email}
+              </div>
+            </div>
           </div>
         ))}
       </section>
