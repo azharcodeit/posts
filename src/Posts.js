@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./Posts.css";
 import spinner from "./assets/spinner.gif";
 import deleteImg from "./assets/delete.png";
-import editImg from "./assets/edit.png";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -31,7 +30,7 @@ const Posts = () => {
   return (
     <div className="layoutMain">
       <header id="header">
-        <h2>Post feed</h2>
+        <h6 className="logo">POSTS</h6>
         <button onClick={handleSubmit}>LOAD POSTS</button>
       </header>
 
