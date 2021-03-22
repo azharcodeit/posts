@@ -49,8 +49,8 @@ img {
 
 img:hover,
 button:hover {
-  -webkit-filter: brightness(70%);
-  -webkit-transition: all 0.3s;
+  filter: brightness(70%);
+  transition: all 0.3s;
 }
 
 .image-wrapper:hover img {
