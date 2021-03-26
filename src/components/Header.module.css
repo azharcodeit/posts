@@ -1,0 +1,40 @@
+.header {
+  top: 0;
+  height: 70px;
+  width: 100%;
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 400;
+  background-color: #f4f7f6;
+  z-index: 302;
+  transition: background 0.3s;
+  border-bottom: 1px solid #e6eaea;
+  padding: 25px;
+}
+.searchLoadContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.logo {
+  border: 0.5px solid #000;
+  height: 39px;
+  padding: 10px;
+}
+button {
+  height: 40px;
+  background-color: #13aa99;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s;
+  width: 150px;
+}
+button:hover {
+  background-color: #107065;
+  transition: all 0.3s;
+}

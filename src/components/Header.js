@@ -1,11 +1,13 @@
 import React from "react";
-import "../Posts.css";
+import s from "./Header.module.css";
 
 const Header = ({ handleSubmit }) => {
   return (
-    <header id="header">
-      <h6 className="logo">POSTS</h6>
-      <button onClick={handleSubmit}>LOAD POSTS</button>
+    <header className={s.header}>
+      <h6 className={s.logo}>POSTS</h6>
+      <div className={s.searchLoadContainer}>
+        <button onClick={handleSubmit}>LOAD POSTS</button>
+      </div>
     </header>
   );
 };

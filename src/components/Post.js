@@ -1,11 +1,11 @@
 import React from "react";
-import "../Posts.css";
+import s from "./Post.module.css";
 
 const Post = ({ first, last, city, state, offset, photo, email }) => {
   return (
     <div>
-      <p className="title">{first}</p>
-      <div className="description">
+      <p className={s.title}>{first}</p>
+      <div className={s.description}>
         <p>
           {city}, {state}
         </p>
@@ -14,9 +14,9 @@ const Post = ({ first, last, city, state, offset, photo, email }) => {
 
       <hr />
 
-      <div className="author">
-        <img src={photo} className="authorPicture" alt="author" />
-        <div className="authorInfo">
+      <div className={s.author}>
+        <img src={photo} className={s.authorPicture} alt="author" />
+        <div className={s.authorInfo}>
           BY: {first.toUpperCase()} {last.toUpperCase()} <br />
           {email}
         </div>
