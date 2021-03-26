@@ -22,7 +22,7 @@
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, 300px);
   padding: 25px;
   grid-gap: 25px;
   grid-auto-flow: dense;
@@ -148,4 +148,10 @@ button {
 }
 .hidden {
   display: none;
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 }

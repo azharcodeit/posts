@@ -27,10 +27,13 @@ const Posts = () => {
     fetchPosts();
   };
 
-  function onRemove(id) {
-    const filteredPosts = posts.filter((item) => item !== posts[id]);
-    setPosts(filteredPosts);
-  }
+  const deleteHandler = (e) => {
+    const index = e.target.closest(".postContainer").id;
+    if (window.confirm("Are you sure you wish to delete this item?")) {
+      const filteredPosts = posts.filter((item) => item !== posts[index]);
+      setPosts(filteredPosts);
+    }
+  };
 
   return (
     <div className="layoutMain">
@@ -41,7 +44,7 @@ const Posts = () => {
 
       <section className="grid">
         {posts.map((p, i) => (
-          <div key={i} className="postContainer">
+          <div key={i} id={i} className="postContainer">
             <div className="imageWrapper">
               <img
                 src={`https://picsum.photos/id/${i + 11}/600/200`}
@@ -54,14 +57,7 @@ const Posts = () => {
                     src={deleteImg}
                     alt="delete"
                     className="postActions"
-                    onClick={() => {
-                      if (
-                        window.confirm(
-                          "Are you sure you wish to delete this item?"
-                        )
-                      )
-                        onRemove(i);
-                    }}
+                    onClick={deleteHandler}
                   />
                 </div>
               </div>
@@ -94,11 +90,7 @@ const Posts = () => {
       </section>
 
       {loading ? (
-        <img
-          src={spinner}
-          alt="loading..."
-          style={{ width: 100, height: 100 }}
-        />
+        <img src={spinner} alt="loading..." style={{ width: 70, height: 70 }} />
       ) : (
         ""
       )}
