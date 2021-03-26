@@ -8,6 +8,7 @@ import Post from "./components/Post";
 const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [searchfield, setSearchfield] = useState("");
   const url = "https://api.randomuser.me/?nat=US&results=4";
 
   const fetchPosts = () => {
@@ -37,11 +38,23 @@ const Posts = () => {
     }
   };
 
+  const filterPosts = (e) => {
+    return setSearchfield(e.target.value);
+  };
+
+  const lowercasedFilter = searchfield.toLowerCase();
+  const filteredPosts = posts.filter(
+    (post) =>
+      post.name.first.toString().toLowerCase().includes(lowercasedFilter) ||
+      post.name.last.toString().toLowerCase().includes(lowercasedFilter) ||
+      post.location.city.toString().toLowerCase().includes(lowercasedFilter)
+  );
+
   return (
     <div className="layoutMain">
-      <Header handleSubmit={handleSubmit} />
+      <Header handleSubmit={handleSubmit} filterPosts={filterPosts} />
       <section className="grid">
-        {posts.map((p, i) => (
+        {filteredPosts.map((p, i) => (
           <div key={i} id={i} className="postContainer">
             <PostImageWrapper i={i} deleteHandler={deleteHandler} />
             <Post
