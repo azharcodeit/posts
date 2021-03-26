@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Posts.css";
 import spinner from "./assets/spinner.gif";
-import deleteImg from "./assets/delete.png";
+import Header from "./components/Header";
+import PostImageWrapper from "./components/PostImageWrapper";
+import Post from "./components/Post";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -29,7 +31,7 @@ const Posts = () => {
 
   const deleteHandler = (e) => {
     const index = e.target.closest(".postContainer").id;
-    if (window.confirm("Are you sure you wish to delete this item?")) {
+    if (window.confirm("Are you sure to delete this post?")) {
       const filteredPosts = posts.filter((item) => item !== posts[index]);
       setPosts(filteredPosts);
     }
@@ -37,58 +39,23 @@ const Posts = () => {
 
   return (
     <div className="layoutMain">
-      <header id="header">
-        <h6 className="logo">POSTS</h6>
-        <button onClick={handleSubmit}>LOAD POSTS</button>
-      </header>
-
+      <Header handleSubmit={handleSubmit} />
       <section className="grid">
         {posts.map((p, i) => (
           <div key={i} id={i} className="postContainer">
-            <div className="imageWrapper">
-              <img
-                src={`https://picsum.photos/id/${i + 11}/600/200`}
-                alt="post"
-              />
-              <div>
-                <div className="actions">
-                  <h5 className="editButton">Edit</h5>
-                  <img
-                    src={deleteImg}
-                    alt="delete"
-                    className="postActions"
-                    onClick={deleteHandler}
-                  />
-                </div>
-              </div>
-            </div>
-
-            <p className="title">{p.name.first}</p>
-            <div className="description">
-              <p>
-                {p.location.city}, {p.location.state}
-              </p>
-              <p>{p.location.timezone.offset}</p>
-            </div>
-
-            <hr />
-
-            <div className="author">
-              <img
-                src={p.picture.thumbnail}
-                className="authorPicture"
-                alt="author"
-              />
-              <div className="authorInfo">
-                BY: {p.name.first.toUpperCase()} {p.name.last.toUpperCase()}{" "}
-                <br />
-                {p.email}
-              </div>
-            </div>
+            <PostImageWrapper i={i} deleteHandler={deleteHandler} />
+            <Post
+              first={p.name.first}
+              last={p.name.last}
+              city={p.location.city}
+              state={p.location.state}
+              offset={p.location.timezone.offset}
+              photo={p.picture.thumbnail}
+              email={p.email}
+            />
           </div>
         ))}
       </section>
-
       {loading ? (
         <img src={spinner} alt="loading..." style={{ width: 70, height: 70 }} />
       ) : (
